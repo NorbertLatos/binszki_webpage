@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binszki hajóplatformok</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="binszki_favicon.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+
+<style>
+:root{
+    --gold:#b89b5e;
+    --dark:#111111;
+    --light:#f7f5f2;
+    --text:#3d3d3d;
+    --max-width:1200px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--light);
+    color:var(--text);
+    line-height:1.8;
+}
+
+.container{
+    width:90%;
+    max-width:var(--max-width);
+    margin:auto;
+}
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+
+    background:rgba(20,20,20,0.85);
+
+    backdrop-filter:blur(12px);
+
+    border-bottom:1px solid rgba(255,255,255,0.05);
+
+    z-index:1000;
+}
+
+@media(max-width:768px){
+
+    header{
+        display:none;
+    }
+
+    section{
+        scroll-margin-top:0;
+    }
+
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:22px 0;
+}
+
+.logo{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    color:var(--dark);
+    letter-spacing:1px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:15px;
+}
+
+nav a{
+    display:inline-block;
+    padding:10px 22px;
+    border:1px solid rgba(184,155,94,0.7);
+    color:white;
+    text-decoration:none;
+    transition:all .3s ease;
+}
+
+nav a:hover{
+    background:var(--gold);
+    color:var(--dark);
+}
+
+@media(max-width:768px){
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    nav a{
+        padding:8px 12px;
+        font-size:.9rem;
+    }
+}
+
+.hero{
+    position:relative;
+    min-height:100vh;
+
+    background:
+    radial-gradient(circle at center,
+    #343434 0%,
+    #252525 60%,
+    #1c1c1c 100%);
+
+    display:flex;
+    align-items:center;
+
+    color:white;
+    overflow:hidden;
+}
+
+.hero .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:relative;
+    z-index:2;
+}
+
+.hero-content{
+    max-width:550px;
+    position:relative;
+    padding-top:100px;
+}
+
+.hero-logo{
+    position:absolute;
+
+    top:30px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    width:min(550px,90vw);
+    height:auto;
+
+    z-index:10;
+}
+
+.hero-boat{
+    width:60%;
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+}
+
+
+.hero-boat img{
+    width:100%;
+    max-width:900px;
+    opacity:0.92;
+
+    filter:
+        drop-shadow(0 0 20px rgba(255,255,255,0.08))
+        brightness(1.05);
+}
+
+.hero h1{
+    font-size:5.5rem;
+    letter-spacing:4px;
+}
+
+.hero p{
+    color:#d2d2d2;
+    max-width:450px;
+    margin-bottom:50px;
+    font-size:1.1rem;
+    letter-spacing:1px;
+}
+
+@media(max-width:1000px){
+
+    .hero .container{
+        flex-direction:column;
+        text-align:center;
+        padding-top:120px;
+    }
+
+    .hero-content{
+        max-width:100%;
+    }
+
+    .hero-boat{
+        width:100%;
+        margin-top:40px;
+    }
+
+    .hero-boat img{
+        max-width:650px;
+    }
+}
+
+.button{
+
+    display:inline-block;
+
+    padding:15px 40px;
+
+    border:1px solid #b89b5e;
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:all .3s ease;
+}
+
+.button:hover{
+
+    background:#b89b5e;
+
+    color:#111;
+}
+
+section{
+    padding:100px 0;
+    scroll-margin-top:100px;
+}
+
+
+
+@media(max-width:768px){
+    section{
+        padding:70px 0;
+    }
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:3rem;
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.section-title span{
+    color:var(--gold);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:0.8rem;
+}
+
+.about{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.about p{
+    font-size:1.15rem;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:40px;
+}
+
+.feature{
+    background:white;
+    padding:40px;
+    border-radius:4px;
+}
+
+.feature h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    color:var(--dark);
+    margin-bottom:15px;
+}
+
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    aspect-ratio:1 / 1;
+    object-fit:cover;
+    height:auto;
+    border-radius:0;
+    cursor:pointer;
+    transition:transform .25s ease, filter .25s ease;
+}
+
+@media(max-width:768px){
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        aspect-ratio:auto;
+        object-fit:contain;
+        height:auto;
+    }
+
+}
+
+.gallery img:hover{
+    transform:scale(1.02);
+    filter:brightness(1.1);
+}
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.92);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+}
+
+.modal span{
+    position:absolute;
+    top:20px;
+    right:30px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+    .gallery{
+        grid-template-columns:1fr;
+    }
+}
+
+.quote{
+    background:
+    radial-gradient(circle at center,
+    #343434 0%,
+    #252525 60%,
+    #1c1c1c 100%);;
+    color:white;
+}
+
+.quote-wrapper{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:60px;
+}
+
+.quote-owner img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:1px solid var(--gold);
+}
+
+.quote-text{
+    max-width:700px;
+}
+
+.quote-text p{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.3rem;
+    line-height:1.4;
+    margin-bottom:20px;
+}
+
+.quote-text span{
+    color:var(--gold);
+    font-size:1rem;
+    letter-spacing:1px;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:2.5rem;
+    margin-bottom:20px;
+}
+
+.contact a{
+    color:var(--gold);
+    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid rgba(0,0,0,0.08);
+}
+
+@media(max-width:768px){
+
+    .quote-wrapper{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .quote-owner img{
+        width:180px;
+        height:180px;
+    }
+
+    .quote-text p{
+        font-size:1.8rem;
+    }
+}
+
+@media(max-width:768px){
+
+    .hero p{
+        font-size:1rem;
+        line-height:1.7;
+        padding:0 10px;
+    }
+
+    .section-title h2{
+        font-size:2rem;
+    }
+
+    .feature h3{
+        font-size:1.5rem;
+    }
+
+    .about p{
+        font-size:1rem;
+    }
+
+    .quote-text p{
+        font-size:1.4rem;
+    }
+
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#termekek">Termékek</a></li>
+                <li><a href="#minoseg">Minőség</a></li>
+                <li><a href="#referenciak">Referencia</a></li>
+                <li><a href="#rolunk">Bemutatkozás</a></li>
+                <li><a href="#kapcsolat">Kapcsolat</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+
+    <img src="binszki_logo.png"
+         alt="Binszki hajóplatformok"
+         class="hero-logo">
+
+    <div class="container">
+
+        <div class="hero-content">
+
+            <p>
+                Célunk olyan egyedi megoldások készítése, 
+                amelyek tökéletesen illeszkednek a hajó karakteréhez. 
+                Minden projektünk a funkcionalitás, a tartósság és az elegáns megjelenés jegyében épül.
+            </p>
+
+            <a href="#kapcsolat" class="button">
+                Ajánlatkérés
+            </a>
+
+        </div>
+
+        <div class="hero-boat">
+            <img src="binszki_hajo.png"
+                 alt="Binszki hajóplatformok">
+        </div>
+
+    </div>
+
+</section>
+
+<section id="termekek">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Termékek</span>
+            <h2>Egyedi igények szerint</h2>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <h3>Fürdőplatformok</h3>
+                <p>
+                    Növelik a fedélzet hasznosan kihasználható területét, és kényelmes kiindulópontot biztosítanak a különböző vízisportokhoz.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Wakeboard tornyok</h3>
+                <p>
+                    A különféle vízisportokhoz ideális vontatási pontot kínálnak, miközben harmonikusan illeszkednek a hajó vonalaihoz, és sportos megjelenést kölcsönöznek a hajótestnek.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Hajókorlátok</h3>
+                <p>
+                    Növelik a fedélzet biztonságát, miközben elegáns megjelenést kölcsönöznek a hajónak.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="minoseg">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Minőség</span>
+            <h2>Minden részlet számít</h2>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <h3>Egyedi gyártás</h3>
+                <p>
+                    Minden platform az adott hajóhoz és az ügyfél igényeihez készül.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Prémium anyagok</h3>
+                <p>
+                    Kiemelkedő minőségű alapanyagok a hosszú élettartamért.
+                </p>
+            </div>
+
+            <div class="feature">
+                <h3>Precíz kivitelezés</h3>
+                <p>
+                    Gondos tervezés és részletorientált gyártás.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section id="referenciak">
+
+    <div class="container">
+
+        <div class="section-title">
+            <span>Galéria</span>
+            <h2>Referencia</h2>
+        </div>
+
+        <div class="gallery">
+
+            <img src="binszki_furdoplatform1.jpg" onclick="openImg(this.src)" alt="Binszki egyedi fürdőplatform hajóra">
+            <img src="binszki_furdoplatform2.jpg" onclick="openImg(this.src)" alt="Binszki egyedi fürdőplatform hajóra">
+            <img src="binszki_furdoplatform3.jpg" onclick="openImg(this.src)" alt="Binszki egyedi fürdőplatform hajóra">
+            <img src="binszki_furdoplatform4.jpg" onclick="openImg(this.src)" alt="Binszki egyedi fürdőplatform hajóra">
+            <img src="binszki_furdoplatform5.jpg" onclick="openImg(this.src)" alt="Binszki egyedi fürdőplatform hajóra">
+
+        </div>
+
+    </div>
+
+</section>
+
+<section id="rolunk">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Bemutatkozás</span>
+            <h2>Bizonyított szakértelem</h2>
+        </div>
+
+        <div class="about">
+            <p>
+                Több mint három évtizede foglalkozom fémipari tervezéssel és kivitelezéssel, 
+                miközben közel ugyanennyi ideje a vízi sportok is az életem szerves részét jelentik. 
+                Szerencsésnek érzem magam, hogy ezt a két területet összekapcsolhatom: a hajóplatformok gyártásában 
+                egyszerre kamatoztathatom szakmai tapasztalatomat és a vízen szerzett gyakorlati ismereteimet. 
+                Célom, hogy olyan tartós, biztonságos és esztétikus megoldásokat készítsek, amelyek valódi értéket nyújtanak ügyfeleim számára.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section class="quote">
+    <div class="container quote-wrapper">
+
+        <div class="quote-owner">
+            <img src="binszki_vizisi.jpg" alt="Binszki József">
+        </div>
+
+        <div class="quote-text">
+            <p>
+                Nem választottam a szenvedélyeim között - 
+                összekötöttem őket.
+            </p>
+
+            <span>– Binszki Zoltán</span>
+        </div>
+
+    </div>
+</section>
+           
+<section id="kapcsolat">
+
+    <div class="container contact">
+
+        <div class="section-title">
+            <span>Kapcsolat</span>
+            <h2>Kérjen egyedi ajánlatot</h2>
+        </div>
+
+
+        <p>E-mail: binszki@t-online.hu</p>
+        <p>Kecskemét, Magyarország</p>
+
+        <br><br>
+
+        <a href="mailto:binszki@t-online.hu?subject=Ajánlatkérés&body=Tisztelt%20Binszki%20Zoltán!%0D%0A%0D%0AA(z)%20..................termékre%20szeretnék%20ajánlatot%20kérni.%0D%0A%0D%0AA%20hajó%20adatai:%0D%0A-%20Gyártmány%20/%20típus:%0D%0A-%20Évjárat:%0D%0A-%20Egyéb%20megjegyzés:%0D%0A%0D%0AKöszönettel:">
+        Kapcsolatfelvétel
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Binszki Zoltán. Minden jog fenntartva.
+</footer>
+<div class="modal" id="modal" onclick="closeImg()">
+    <span>&times;</span>
+    <img id="modalImg">
+</div>
+
+<script>
+function openImg(src){
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
+}
+
+function closeImg(){
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+</body>
+</html>
